@@ -1,0 +1,18 @@
+<mat-card class="modal">
+  <header class="header">
+    <mat-card-title>Create Group</mat-card-title>
+  </header>
+  <mat-card-content>
+    <form class="form" [formGroup]="form" (submit)="$event.preventDefault(); onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input formControlName="name" matInput placeholder="Name" [errorStateMatcher]="matcher">
+        <mat-error *ngIf="name?.errors?.['required']">required</mat-error>
+        <mat-error *ngIf="name?.errors?.['pattern']">any of letters, digits or spaces</mat-error>
+        <mat-error *ngIf="name?.errors?.['maxlength']">maximum 30 characters</mat-error>
+      </mat-form-field>
+
+      <button class="button" mat-raised-button type="submit" [disabled]="form.invalid || isLoading">Submit</button>
+    </form>
+  </mat-card-content>
+</mat-card>

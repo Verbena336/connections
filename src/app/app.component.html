@@ -1,0 +1,5 @@
+<div class="vh-100 mat-app-background" [ngClass]="isDarkTheme ? 'dark-theme wrapper' : 'light-theme wrapper'">
+  <app-header [isDarkTheme]="isDarkTheme" (changeIsDarkTheme)="onIsDarkThemeChange($event)"></app-header>
+  <app-loading></app-loading>
+  <router-outlet></router-outlet>
+</div>

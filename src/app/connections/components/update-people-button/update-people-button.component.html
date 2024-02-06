@@ -1,0 +1,3 @@
+<button color="primary" type="button" (click)="getPeople()" mat-raised-button
+  [disabled]="this.countdownService.timers.has('people') || (isLoading$ | async)">
+  {{ countdownService.timers.has('people') ? countdownService.timers.get('people') + ' sec.' : 'UPDATE' }}</button>

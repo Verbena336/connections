@@ -1,0 +1,14 @@
+<div class="wrapper" #chatWrapper>
+  <div *ngFor="let message of messages" class="message__wrapper"
+    [ngClass]="{'align-right': (this.authService.uid$ | async) === message.authorID}">
+    <p class="date">{{message.createdAt | date:'yyyy/MM/dd H:mm'}}</p>
+    <p class="name">{{ message.authorID | personName }}{{ (this.authService.uid$ | async) === message.authorID ? ' (Me)'
+      : '' }}</p>
+    <p>{{message.message}}</p>
+  </div>
+</div>
+<form class="form" [formGroup]="form" (submit)="$event.preventDefault(); onSubmit()">
+  <input required type="text" class="input" formControlName="message">
+  <button type="submit" class="send"
+    [disabled]="form.invalid || (loadingService.isLoading$ | async)"><mat-icon>send</mat-icon></button>
+</form>

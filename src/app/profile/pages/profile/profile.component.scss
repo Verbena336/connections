@@ -1,0 +1,95 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 25px;
+}
+
+.card {
+  min-height: 495px;
+}
+
+.avatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  font-size: 100px;
+  line-height: 200px;
+  text-align: center;
+  display: inline-block;
+}
+
+.controls {
+  display: flex;
+  gap: 20px;
+}
+
+:host-context(.light-theme) .avatar {
+  color: var(--white);
+  background: var(--light-primary);
+}
+
+:host-context(.dark-theme) .avatar {
+  color: var(--black);
+  background: var(--mint);
+}
+
+.wrapper {
+  position: relative;
+  padding: 0 150px;
+  width: 100%;
+  margin: 80px 0;
+}
+
+.input {
+  width: 250px;
+}
+
+.loading {
+  position: absolute;
+}
+
+.content {
+  padding: 16px;
+}
+
+.field {
+  &__title {
+    font-size: 22px;
+  }
+  &__value {
+    font-size: 20px;
+  }
+}
+
+.field:not(:last-child) {
+  margin-bottom: 22px;
+}
+
+@media screen and (max-width: 750px) {
+  .wrapper {
+    padding: 0 20px;
+    font-size: 18px;
+    margin: 30px 0;
+  }
+
+  .field {
+    &__title {
+      font-size: 20px;
+    }
+    &__value {
+      font-size: 18px;
+    }
+  }
+
+  .avatar {
+    width: 80px;
+    height: 80px;
+    font-size: 50px;
+    line-height: 80px;
+  }
+
+  .card {
+    min-height: 366px;
+  }
+}

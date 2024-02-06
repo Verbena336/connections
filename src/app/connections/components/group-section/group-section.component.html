@@ -1,0 +1,7 @@
+<mat-card>
+  <div class="controls">
+    <app-update-groups-button></app-update-groups-button>
+    <app-create-group-button></app-create-group-button>
+  </div>
+  <app-group-list [groups]="(groups$ | async)"></app-group-list>
+</mat-card>

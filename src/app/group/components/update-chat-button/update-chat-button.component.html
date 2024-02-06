@@ -1,0 +1,4 @@
+<button color="primary" type="button" (click)="getMessages()" mat-raised-button
+  [disabled]="this.id && this.countdownService.timers.has(this.id) || (isLoading$ | async)">
+  {{ this.id && countdownService.timers.has(this.id) ? countdownService.timers.get(this.id) + ' sec.' : 'UPDATE' }}
+</button>

@@ -1,0 +1,11 @@
+<div class="controls">
+  <div class="controls__left">
+    <a class="back" [routerLink]="['/']">
+      <mat-icon class="icon">arrow_back</mat-icon>
+      <span>Back</span>
+    </a>
+    <app-update-chat-button [id]="id"></app-update-chat-button>
+  </div>
+  <app-delete-group-button *ngIf="(groupService.isMyGroup(id) | async)"></app-delete-group-button>
+</div>
+<app-group-chat [id]="id" *ngIf="(peopleService.people$ | async)!.length"></app-group-chat>

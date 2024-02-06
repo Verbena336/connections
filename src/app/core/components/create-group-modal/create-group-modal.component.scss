@@ -1,0 +1,20 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  padding: 16px;
+}
+
+.modal {
+  width: 500px;
+}
+
+.button {
+  color: var(--white);
+}
+
+.button:not([disabled]) {
+  background-color: var(--light-primary);
+}

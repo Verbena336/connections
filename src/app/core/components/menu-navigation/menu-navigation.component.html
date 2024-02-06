@@ -1,0 +1,7 @@
+<button mat-icon-button [matMenuTriggerFor]="(isAuthUser$ | async) ? menu : null">
+  <mat-icon>more_vert</mat-icon>
+</button>
+<mat-menu #menu="matMenu" xPosition="before">
+  <button mat-menu-item (click)="handleMain()">go to main</button>
+  <button mat-menu-item (click)="handleProfile()">go to profile</button>
+</mat-menu>

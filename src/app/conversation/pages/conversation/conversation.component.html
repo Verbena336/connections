@@ -1,0 +1,11 @@
+<div class="controls">
+  <div class="controls__left">
+    <a class="back" [routerLink]="['/']">
+      <mat-icon class="icon">arrow_back</mat-icon>
+      <span>Back</span>
+    </a>
+    <app-update-conversation-button [id]="id"></app-update-conversation-button>
+  </div>
+  <app-delete-conversation-button></app-delete-conversation-button>
+</div>
+<app-conversation-chat [id]="id" *ngIf="(peopleService.people$ | async)!.length"></app-conversation-chat>

@@ -1,0 +1,18 @@
+export const environment = {
+  API_URL: 'https://connectionsback.onrender.com/',
+  SIGNUP: 'registration',
+  SIGNIN: 'login',
+  PROFILE: 'profile',
+  LOGOUT: 'logout',
+  GROUPS_LIST: 'groups/list',
+  GROUPS_CREATE: 'groups/create',
+  GROUPS_DELETE: 'groups/delete',
+  USERS: 'users',
+  CONVERSATIONS_LIST: 'conversations/list',
+  CONVERSATIONS_CREATE: 'conversations/create',
+  GROUP_MESSAGES: 'groups/read',
+  ADD_GROUP_MESSAGE: 'groups/append',
+  CONVERSATION_MESSAGES: 'conversations/read',
+  ADD_CONVERSATION_MESSAGE: 'conversations/append',
+  CONVERSATION_DELETE: 'conversations/delete',
+};

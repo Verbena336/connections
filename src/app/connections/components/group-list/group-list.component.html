@@ -1,0 +1,11 @@
+<div class="card__list">
+  <mat-card *ngFor="let group of groups" class="card__wrapper" [routerLink]="['/group', group.id]">
+    <mat-card-content class="card">
+      <p class="group">{{group.name}}</p>
+      <button color="warn" class="my-fab" mat-icon-button (click)="deleteGroup($event, group.id)"
+        *ngIf="(authService.uid$ | async) && (authService.uid$ | async) === group.createdBy">
+        <mat-icon class="icon">delete</mat-icon>
+      </button>
+    </mat-card-content>
+  </mat-card>
+</div>

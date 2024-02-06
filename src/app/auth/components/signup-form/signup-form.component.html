@@ -1,0 +1,34 @@
+<h2>SignUp</h2>
+<mat-card>
+  <mat-card-content>
+    <form class="form" [formGroup]="form" (submit)="$event.preventDefault(); onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input formControlName="name" matInput [errorStateMatcher]="matcher">
+        <mat-error *ngIf="name?.errors?.['required']">required</mat-error>
+        <mat-error *ngIf="name?.errors?.['pattern']">any of letters or spaces</mat-error>
+        <mat-error *ngIf="name?.errors?.['maxlength']">maximum 40 characters</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input formControlName="email" type="email" matInput [errorStateMatcher]="matcher">
+        <mat-error *ngIf="email?.errors?.['email']">invalid email</mat-error>
+        <mat-error *ngIf="email?.errors?.['required']">required</mat-error>
+        <mat-error *ngIf="email?.errors?.['taken']">this email already exists</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input formControlName="password" type="password" matInput [errorStateMatcher]="matcher">
+        <mat-error *ngIf="password?.errors?.['passwordStrength']">{{password?.errors?.['passwordStrength']}}</mat-error>
+        <mat-error *ngIf="password?.errors?.['required']">required</mat-error>
+      </mat-form-field>
+
+      <button class="button" mat-raised-button color="primary" type="submit"
+        [disabled]="form.invalid || (isLoading$ | async)">Submit</button>
+    </form>
+    <button class="button__login" type="button" color="secondary" [disabled]="isLoading$ | async" mat-flat-button
+      (click)="handleSignInNavigation()">Go to SignIn</button>
+  </mat-card-content>
+</mat-card>

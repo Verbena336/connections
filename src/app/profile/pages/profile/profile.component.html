@@ -1,0 +1,45 @@
+<div *ngIf="UserData$ | async as userData" class="wrapper">
+  <mat-card class="card">
+    <header class="header">
+      <span class="avatar" *ngIf="userData.name">{{userData.name.split('')[0].toUpperCase()}}</span>
+      <app-logout-button [isLogout]="isLogout" (changeIsLogout)="handleLogout($event)"></app-logout-button>
+    </header>
+    <mat-card-content class="content" *ngIf="userData.uid && userData.name && userData.email && userData.createdAt">
+      <form class="form" id="profile" [formGroup]="form" (submit)="$event.preventDefault(); handleSave()">
+        <div class="field" *ngIf="!isEditing">
+          <span class="field__title">Name: </span>
+          <span class="field__value" *ngIf="!isEditing">{{userData.name}}</span>
+        </div>
+        <mat-form-field *ngIf="isEditing" class="input">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name" [errorStateMatcher]="matcher" value="userData.name">
+          <mat-error *ngIf="name?.errors?.['required']">required</mat-error>
+          <mat-error *ngIf="name?.errors?.['pattern']">any of letters or spaces</mat-error>
+          <mat-error *ngIf="name?.errors?.['maxlength']">maximum 40 characters</mat-error>
+        </mat-form-field>
+        <div class="field">
+          <span class="field__title">Email: </span>
+          <span class="field__value">{{userData.email}}</span>
+        </div>
+        <div class="field">
+          <span class="field__title">Uid: </span>
+          <span class="field__value">{{userData.uid}}</span>
+        </div>
+        <div class="field">
+          <span class="field__title">Created At: </span>
+          <span class="field__value">{{userData.createdAt | date:'yyyy/MM/dd H:mm' }}</span>
+        </div>
+      </form>
+    </mat-card-content>
+    <mat-divider *ngIf="userData.uid && userData.name && userData.email && userData.createdAt"></mat-divider>
+    <mat-card-actions class="controls" *ngIf="userData.uid && userData.name && userData.email && userData.createdAt">
+      <button mat-button *ngIf="!isEditing" (click)="handleEdit()" type="button"
+        [disabled]="(isLoading$ | async) || isLogout">EDIT NAME</button>
+      <button color="primary" *ngIf="isEditing"
+        [disabled]="(isLoading$ | async) || isLogout || form.invalid || userData.name === name?.value" form="profile"
+        type="submit" class="submit" mat-raised-button>SAVE</button>
+      <button mat-button *ngIf="isEditing" [disabled]="(isLoading$ | async) || isLogout" type="button"
+        (click)="handleCancel()">CANCEL</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

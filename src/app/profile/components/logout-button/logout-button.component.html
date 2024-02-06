@@ -1,0 +1,2 @@
+<button color="warn" type="button" mat-raised-button (click)="logout()"
+  [disabled]="isLogout || (isLoading$ | async)">LOGOUT</button>

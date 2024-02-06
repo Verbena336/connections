@@ -1,0 +1,9 @@
+<div class="info">
+  <img src="assets/404.svg" alt="404" class="img">
+  <h1 class="title">Lost your way?</h1>
+  <p class="text">Sorry, I cant find this page¯\_(ツ)_/¯</p>
+</div>
+<a class="link" [routerLink]="[(authService.isLoggedIn$ | async) ? '/' : '/signin']">
+  <mat-icon class="icon">arrow_back</mat-icon>
+  <span class="link__text">Go to main</span>
+</a>

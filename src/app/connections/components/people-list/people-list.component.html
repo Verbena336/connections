@@ -1,0 +1,10 @@
+<div class="card__list">
+  <ng-container *ngFor="let person of (people$ | async)">
+    <mat-card [ngClass]="isCreatedConversation(person.uid) ? 'background' : 'card__wrapper'"
+      *ngIf="(this.authService.uid$ | async) !== person.uid" (click)="handleConversation(person.uid)">
+      <mat-card-content class="card">
+        <p class="person">{{person.name}}</p>
+      </mat-card-content>
+    </mat-card>
+  </ng-container>
+</div>

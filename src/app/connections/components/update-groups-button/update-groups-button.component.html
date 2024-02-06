@@ -1,0 +1,3 @@
+<button color="primary" type="button" (click)="getGroups()" mat-raised-button
+  [disabled]="this.countdownService.timers.has('groups') || (isLoading$ | async) || isDisable">
+  {{ countdownService.timers.has('groups') ? countdownService.timers.get('groups') + ' sec.' : 'UPDATE' }}</button>

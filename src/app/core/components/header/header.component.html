@@ -1,0 +1,10 @@
+<mat-toolbar class="header">
+  <div class="menu__wrapper">
+    <h1>Connections</h1>
+    <label class="switch">
+      <input type="checkbox" [checked]="isDarkTheme" (click)="changeTheme()">
+      <span class="slider round"></span>
+    </label>
+  </div>
+  <app-menu-navigation *ngIf="(isAuthUser$ | async)"></app-menu-navigation>
+</mat-toolbar>
